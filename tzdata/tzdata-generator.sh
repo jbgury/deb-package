@@ -130,14 +130,14 @@ patch_changelog()
 {
 	changelog_date=$(date -R)
 	PATCH=/tmp/patch_changelog$$
-	STRING_VERSION="${VERSION}-swing-all"
+	STRING_VERSION="${VERSION}-all"
 	(
 	echo "${NAME} (${STRING_VERSION}) stable; urgency=low";
 	echo ""
 	echo "  * Update tzdata to the upstream version ${VERSION}."
 	echo "    - check the http://www.iana.org/time-zones to get more information."
 	echo ""
-	echo " -- SWING <swing@delfingen.com>  ${changelog_date}"
+	echo " -- MY NAME <yourname@email.com>  ${changelog_date}"
 	echo ""
 	) > ${PATCH}
 	cat ${PATCH} ${DEB_SRC}/${tzdata_src}/debian/changelog > ${SRC_DIR}/debian/changelog
