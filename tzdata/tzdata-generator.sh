@@ -50,7 +50,7 @@ DEB_SRC=${WORKING_DIR}/deb_source
 DEBS=${WORKING_DIR}/debs
 
 OLSON_DATA_SRC=${WORKING_DIR}/olson_tzdata
-URL="hftp://ftp.iana.org"
+URL="ftp://ftp.iana.org"
 DIR=tz
 FILE=tzdata-latest.tar.gz
 
@@ -158,7 +158,7 @@ patch_generator()
 generate_debs()
 {
 	cd ${SRC_DIR}
-	dpkg-buildpackage -rfakeroot -b
+	dpkg-buildpackage -rfakeroot -b -us -uc
 	[ "$?" -ne 0 ]&& echo "An error occurs when generating debs package. Please check the standard output" && exit 1
 	cd ${CURRENT_DIR}
 	mv ${DEB_SRC}/${NAME}*${STRING_VERSION}*.deb ${DEBS}/.
